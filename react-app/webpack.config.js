@@ -36,16 +36,16 @@ module.exports = {
         new HotModuleReplacementPlugin()
     ],
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,
+        // contentBase: path.join(__dirname, 'dist'),
+        // compress: true,
         // port: 9000,
         proxy: {
-            '/api':{
-                target: 'http://localhost:8181',
+            '/api': {
+                target: 'http://Lenovo:8181',
                 changeOrigin: true,
                 secure: false,
                 logLevel: "debug"
             }
-          }
+        }
     }
 };

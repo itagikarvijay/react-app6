@@ -12,15 +12,18 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/runtime": "^7.10.2",
+    "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "formik": "^2.1.4",
     "http-proxy-middleware": "^1.0.4",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
+    "use-http": "^1.0.13",
     "yup": "^0.29.1"
   },
   "devDependencies": {
