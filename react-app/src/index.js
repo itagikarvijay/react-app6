@@ -9,7 +9,8 @@ import store from './store/store'
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import Login from './login/login';
 import Home from './home/home'
-// import { ErrorBoundry, ErrorBoundary } from './error/ErrorBoundary'
+import Order from './transaction/order/Order'
+ // import { ErrorBoundry, ErrorBoundary } from './error/ErrorBoundary'
 
 const routing = (
     <Router>
@@ -26,7 +27,8 @@ const routing = (
             }
             <Route exact path="/" component={App} />
             <Route e path="/login" component={Login} />
-            <Route path="/home" component={Home} />
+            <Route path="/home" component={Home} /> 
+            <Route path="/home/Order" component={Order} />
         </div>
     </Router>
 )
