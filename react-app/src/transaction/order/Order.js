@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Formik, Field, Form, ErrorMessage, FieldArray, FormikProps } from 'formik';
@@ -9,6 +9,7 @@ import './order.css';
 import OrderService from './order-service';
 
 const Order = () => {
+    let saveRef;  //= React.createRef();
     let order = new OrderService();
     const data = useSelector(state => state.product.products_list);
     return (
@@ -16,12 +17,13 @@ const Order = () => {
             <Formik
                 initialValues={{ products_list: data }}
                 onSubmit={(values, actions) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        actions.setSubmitting(false);
-                    }, 1000);
+                    // setTimeout(() => {
+                    // alert(JSON.stringify(values, null, 2));
+                    order.save(values);
+                    actions.setSubmitting(false);
+                    // }, 1000);
                 }}>{({ handleSubmit, handleChange, handleBlur, values, errors }) => (
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <FieldArray
                             name="products_list"
                             render={({ insert, remove, push }) => (
@@ -66,7 +68,7 @@ const Order = () => {
                                                                 }) => (
                                                                         <div>
                                                                             <FormGroup controlId={`qty_${index}`}>
-                                                                                <FormControl type={'text'} size="sm" />
+                                                                                <FormControl value={values.qty_0} onChange={handleChange} type={'text'} size="sm" />
                                                                             </FormGroup>
                                                                         </div>
                                                                     )}
@@ -96,11 +98,15 @@ const Order = () => {
                                 </div>
                             )}
                         />
-                        <button type="submit">Submit</button>
+                        <Button size="sm" type="submit">Submit</Button>
                     </Form>
                 )}
             </Formik>
         </div>
     )
-}
+    // handleChange = event => {
+    //     console.log("event.target.value");
+    //       console.log(event.target.value);
+    //   }
+ }
 export default Order
